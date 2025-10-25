@@ -49,6 +49,18 @@ app.post('/submit-rsvp', (req, res) => {
     }
 });
 
+const path = require("path");
+const EXCEL_FILE = path.join(__dirname, "tmp_data.xlsx");
+
+app.get("/download-rsvp", (req, res) => {
+  res.download(EXCEL_FILE, "RSVP_List.xlsx", (err) => {
+    if (err) {
+      console.error("Download error:", err);
+      res.status(500).send("Could not download the file.");
+    }
+  });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
