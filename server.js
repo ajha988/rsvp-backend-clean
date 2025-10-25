@@ -53,6 +53,8 @@ const path = require("path");
 const EXCEL_FILE = path.join(__dirname, "tmp_data.xlsx");
 
 app.get("/download-rsvp", (req, res) => {
+  console.log("Excel file path:", EXCEL_FILE); // ✅ Add this line here
+
   res.download(EXCEL_FILE, "RSVP_List.xlsx", (err) => {
     if (err) {
       console.error("Download error:", err);
