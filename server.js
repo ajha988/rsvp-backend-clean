@@ -49,11 +49,8 @@ app.post('/submit-rsvp', (req, res) => {
     }
 });
 
-const path = require("path");
-const EXCEL_FILE = path.join(__dirname, "tmp_data.xlsx");
-
 app.get("/download-rsvp", (req, res) => {
-  console.log("Excel file path:", EXCEL_FILE); // ✅ Add this line here
+  console.log("Excel file path:", EXCEL_FILE); // ✅ reuse existing variable
 
   res.download(EXCEL_FILE, "RSVP_List.xlsx", (err) => {
     if (err) {
